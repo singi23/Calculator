@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Kalkulator</title>
+        <style>
+            body {
+                font-family: 'Courier New', Courier, monospace;
+                text-transform: uppercase;
+                background-color: #ffffff;
+                margin: 0;
+                padding: 0;
+            }
+
+            .container {
+                max-width: 500px;
+                margin: auto;
+                position: absolute;
+                top: 0; left: 0; bottom: 0; right: 0;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+            form {
+                width: 100%;
+                max-width: 400px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            input[type="text"], select {
+                padding: 10px;
+                margin: 10px;
+                font-size: 20px;
+                border-radius: 5px;
+                border: none;
+                box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+                background-color: #ffffff;
+                width: 100%;
+                max-width: 400px;
+            }
+
+            input[type="submit"] {
+                padding: 10px 20px;
+                color: #ffffff;
+                background-color: indigo;
+                border: none;
+                border-radius: 5px;
+                font-size: 20px;
+                cursor: pointer;
+                transition: background-color 0.4s;
+            }
+
+            input[type="submmit"] hover {
+                background-color: indigo;
+            }
+
+            h1 {
+                font-size: 30px;
+                margin-top: 0;
+                padding: 10px 20px;
+                color: indigo;
+                box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+            }
+
+            .result {
+                font-size: 35px;
+                font-weight: 900;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Kalkulator</h1>
+            <form onsubmit="calculate(); return false;">
+                <input type="text" id="num1" placeholder="Prvi broj">
+                <select id="operator">
+                    <option value="+">+</option>
+                    <option value="-">-</option>
+                    <option value="*">*</option>
+                    <option value="/">/</option>
+                </select>
+                <input type="text" id="num2" placeholder="Drugi Broj">
+                <input type="submit" value="Izracunaj">
+            </form>
+            <p class="result" id="result"></p>
+        </div>
+
+        <script>
+            function calculate() {
+                let num1 = parseFloat(document.getElementById("num1").value);
+                let num2 = parseFloat(document.getElementById("num2").value);
+                let operator = document.getElementById("operator").value;
+                let result;
+
+                switch (operator) {
+                    case "+":
+                        result = num1 + num2;
+                        break;
+                    case "-":
+                        result = num1 - num2;
+                        break;
+                    case "*":
+                        result = num1 * num2;
+                        break;
+                    case "/":
+                        result = num1 / num2;
+                        break;
+                    default:
+                        result = "Greska! Nepoznata operacija.";            
+                }
+
+                document.getElementById("result").innerHTML = result;
+            }
+        </script>
+    </body>
+</html>
